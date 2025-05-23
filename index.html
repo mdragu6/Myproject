@@ -29,10 +29,6 @@ body {
     align-items: center;
 }
 
-.highlight {
-    background-color: yellow;
-}
-
 .found {
     background-color: lightgreen;
 }
@@ -63,7 +59,6 @@ body {
 <body>
 
 <h1>Binary Search Visualization</h1>
-
 
 <div class="controls">
     <label for="arrayInput">Sorted Array (comma-separated):</label>
@@ -101,11 +96,17 @@ function updateArrayDisplay(arr, highlightIndex = -1, foundIndex = -1, currentLo
         indexLabel.textContent = `Index: ${index}`;
         div.appendChild(indexLabel);
 
-        if (index === highlightIndex) {
-            div.classList.add('highlight');
+        // Highlight from low to high in light yellow
+        if (index >= currentLow && index <= currentHigh) {
+            div.style.backgroundColor = 'lightyellow';
         }
+        // Highlight mid with a stronger yellow
+        if (index === highlightIndex) {
+            div.style.backgroundColor = '#fff59d'; // stronger yellow for mid
+        }
+        // Highlight found index green
         if (index === foundIndex) {
-            div.classList.add('found');
+            div.style.backgroundColor = 'lightgreen';
         }
 
         if (index === currentLow) {
