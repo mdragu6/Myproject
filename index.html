@@ -1,593 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Texture and Designers</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="manifest" href="/gaganatexture/manifest.json">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family:sans-serif;
-      padding-bottom: 60px;
-    }
-
-    .navbar {
-      background-color: #333;
-      color: white;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      flex-wrap: wrap;
-    }
-
-    .navbar h1 {
-      font-size: 20px;
-    }
-
-    .menu-icon {
-      font-size: 26px;
-      cursor: pointer;
-    }
-
-    .slider {
-      max-width: 100%;
-      height: 400px;
-      overflow: hidden;
-    }
-
-    .slides {
-      display: none;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background-color: #86b0dd;
-      animation: fade 1s;
-    }
-
-    @keyframes fade {
-      from { opacity: 0.4; }
-      to { opacity: 1; }
-    }
-
-    section {
-      padding: 20px;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      background-color: #fff;
-      border-top: 1px solid #ccc;
-      box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-      z-index: 100;
-    }
-
-    .bottom-nav button {
-      flex: 1;
-      padding: 12px 0;
-      font-size: 14px;
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-
-    .bottom-nav button.active {
-      font-weight: bold;
-      color: #007BFF;
-    }
-
-    .design-gallery,
-    .mat-images {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 10px;
-      margin-top: 20px;
-      padding: 10px;
-    }
-
-    .design-gallery img,
-    .mat-images img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      margin-top: 20px;
-    }
-
-    .video-frame {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.4;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
-
-    #fl {
-      text-align: center;
-    }
-
-    #fl p {
-      margin: 20px auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    #fl p a {
-      padding: 10px;
-      margin: 5px;
-      text-decoration: none;
-      color: #333;
-      font-size: 16px;
-    }
-
-    #about, #contact {
-      text-align: center;
-    }
-
-    .texture-type {
-      font-size: 36px;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      font-style: oblique;
-      color: brown;
-      padding: 10px;
-    }
-
-    #textures {
-      background-color: rgb(250, 250, 162);
-      text-align: center;
-      font-size: 20px;
-    }
-
-    .texture-type li {
-      border: 2px solid rgb(255, 255, 255);
-      margin: 20px auto;
-      border-radius: 10px;
-      padding: 10px;
-      list-style: none;
-      font-weight:bold;
-    }
-#t1{
-background:url('bubble.jpg');
+<title>Binary Search Visualization</title>
+<style>
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-#t2{
-background:url('plus.jpg');
-}
-#t3{
-background:url('vertical.jpg');
-}
-#t4{
-background:url('horizontal.jpg');
-}
-#t5{
-background:url('raindrop.jpg');
-}
-#t6{
-background:url('zigzag.jpg');
-}
-#t7{
-background-color:gray;
+.i5 {
+    color: red;
 }
 
-
-    Responsive CSS 
-    @media (max-width: 768px) {
-    /*  .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .navbar h1 {
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
-
-      .slider {
-        height: auto;
-      }
-
-      .slides {
-        max-height: 300px;
-      }
-
-      .design-gallery,
-      .mat-images {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      }
-
-      .bottom-nav {
-        flex-direction: column;
-        position: static;
-      }
-
-      .bottom-nav button {
-        font-size: 16px;
-        padding: 10px;
-      }
-*/
-      .texture-type {
-        font-size: 24px;
-      }
-
-      .texture-type li {
-        font-size: 16px;
-        padding: 8px;
-      }
-
-      #fl p {
-        flex-direction: column;
-        align-items: center;
-        margin-left: 0;
-      }
-
-      #fl p a {
-        font-size: 14px;
-        padding: 8px;
-      }
-    }
-    .carousel {
-     margin-left:25%; 
-  width: 50%;
-  max-width: 800px;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+.array-container {
+    display: flex;
+    margin-bottom: 20px;
 }
 
-.review {
-  display: flex;
-  transition: transform 1s ease-in-out;
-
+.array-element {
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    margin: 5px;
+    text-align: center;
+    min-width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.review img {
-  width: 100%;
-  flex-shrink: 0;
-  object-fit: contain;
-  height: 20%;
-  border-radius: 10px;
+.highlight {
+    background-color: yellow;
 }
 
-.carousel:hover {
-  cursor: pointer;
+.found {
+    background-color: lightgreen;
 }
-.floating-call-button {
-      position: fixed;
-      bottom:50px;
-      right: 20px;
-      background: linear-gradient(45deg, #00c6ff, #0072ff);
-      color: white;
-      padding: 15px 20px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 1000;
-    }
 
-    .floating-call-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-    }
+.index-label {
+    font-size: 0.8em;
+    color: #777;
+}
 
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      .floating-call-button {
-        padding: 12px 16px;
-        font-size: 16px;
-      }
-    }
-  </style>
+.low-label, .high-label, .mid-label {
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#message {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: red;
+}
+</style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <h1><img src="favicon.png" height="20px"> Gagana Texture and Designers</h1>
-    <a href="https://wa.me/8722356113" target="_blank">
-  <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="Chat with us on WhatsApp" />
-</a>
+<h1>Binary Search Visualization</h1>
 
-    <div class="menu-icon" onclick="shareSite()"><i class="fas fa-share-alt"></i></div>
-  </div>
 
-  <!-- Tabs -->
-  <div id="home" class="tab-content active">
-    <div class="slider">
-      <img class="slides" src="i1.jpg">
-      <img class="slides" src="i2.png">
-      <img class="slides" src="i3.jpg">
-      <img class="slides" src="i4.jpg">
-      <img class="slides" src="i5.jpg">
-      <img class="slides" src="i6.jpg">
-      <img class="slides" src="i7.jpg">
-    </div>
+<div class="controls">
+    <label for="arrayInput">Sorted Array (comma-separated):</label>
+    <input type="text" id="arrayInput" value="2,5,8,12,16,23,38,56,72,91">
+</div>
 
-    <h3>Watch Our Work</h3>
-    <div class="video-wrapper">
-      <div id="player" class="video-frame"></div>
-    </div>
+<div class="controls">
+    <label for="targetInput">Target Value:</label>
+    <input type="number" id="targetInput" value="23">
+</div>
 
-    <section id="about">
-      <h2>About Us</h2>
-      <p>We are Gagana Texture and Designers, bringing creativity and quality to every project.</p>
-    </section>
-    <div class="carousel">
-      <div class="review" id="review">
-      <img class="slide" src="r1.jpeg">
-      <img class="slide" src="r2.jpeg">
-      <img class="slide" src="r3.jpeg">
-      <img class="slide" src="r4.jpeg">
-      <img class="slide" src="r5.jpeg">
-      <img class="slide" src="r6.jpeg">
-      <img class="slide" src="r7.jpeg">
-      <img class="slide" src="r1.jpeg">
-    </div>
-    </div>
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>Email: swamy008@gmail.com</p>
-      <p>Phone: +91-8105939912, +91-7349780912</p>
-    </section>
+<button onclick="startBinarySearch()">Start Search</button>
 
-    <div id="fl">
-      <h3>Follow Us</h3>
-      <p>
-        <a href="https://www.facebook.com/share/193WVDPt4C/"><i class="fab fa-facebook"></i> Facebook</a>
-        <a href="https://www.instagram.com/gagana_texture_designer_12?igsh=ODd3NWZzZ3hjM290"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://youtube.com/@gaganatexturedesigner?si=a2J1vOJYIVGQ_b2a"><i class="fab fa-youtube"></i> YouTube</a>
-        <a href="https://g.co/kgs/DzG2cLv"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
-      </p>
-    </div>
-  </div>
+<div class="array-container" id="arrayDisplay"></div>
 
-  <div id="textures" class="tab-content">
-    <section>
-      <h2>Textures</h2>
-      <p>Explore a wide variety of wall and surface textures.</p>
-      <div class="texture-type">
-        <ul>
-          <li id="t1">BUBBLE TEXTURE</li>
-          <li id="t2">PLUS TEXTURE</li>
-          <li id="t3">VERTICAL TEXTURE</li>
-          <li id="t4">HORIZONTAL TEXTURE</li>
-          <li id="t5">RAIN DROP TEXTURE</li>
-          <li id="t6">ZIG ZAG TEXTURE</li>
-          <li id="t7">ROLLER TEXTURE</li>
-        </ul>
-      </div>
-    </section>
-  </div>
+<script>
+let array = [];
+let target;
+let low;
+let high;
+let steps = [];
+let stepIndex = 0;
+let intervalId;
 
-  <div id="designs" class="tab-content">
-    <section>
-      <h2>Designs</h2>
-      <p>Browse our latest design portfolio for inspiration.</p>
-      <div class="design-gallery">
-        <img src="d1.jpg" alt="Design 1">
-          <img src="d2.jpg" alt="Design 2">
-          <img src="d3.jpg" alt="Design 3">
-          <img src="d4.jpg" alt="Design 4">
-          <img src="d5.jpg" alt="Design 5">
-          <img src="d6.jpg" alt="Design 6">
-          <img src="d7.jpg" alt="Design 7">
-          <img src="d8.jpg" alt="Design 8">
-          <img src="d9.jpg" alt="Design 9">
-          <img src="c1.jpg" alt="Design 10">
-          <img src="c2.jpg" alt="Design 11">
-          <img src="c3.jpg" alt="Design 12">
-          <img src="c4.jpg" alt="Design 13">
-          <img src="c5.jpg" alt="Design 14">
-          <img src="c6.jpg" alt="Design 15">
-          <img src="c7.jpg" alt="Design 16">
-          <img src="c8.jpg" alt="Design 17">
-          <img src="c9.jpg" alt="Design 18">
-          <img src="e1.jpg" alt="Design 19">
-          <img src="e2.jpg" alt="Design 20">
-          <img src="e3.jpg" alt="Design 21">
-          <img src="e4.jpg" alt="Design 22">
-          <img src="e5.jpg" alt="Design 23">
-          <img src="e6.jpg" alt="Design 24">
-          <img src="e7.jpg" alt="Design 25">
-          <img src="e8.jpg" alt="Design 26">
-          <img src="e9.jpg" alt="Design 27">
-          <img src="f1.jpg" alt="Design 28">
-          <img src="f2.jpg" alt="Design 29">
-          <img src="f3.jpg" alt="Design 30">
-          <img src="f4.jpg" alt="Design 31">
-          <img src="f5.jpg" alt="Design 32">
-          <img src="f6.jpg" alt="Design 33">
-          <img src="f7.jpg" alt="Design 34">
-          <img src="f8.jpg" alt="Design 35">
-          <img src="f9.jpg" alt="Design 36">
-          <img src="g1.jpg" alt="Design 37">
-          <img src="g2.jpg" alt="Design 38">
-          <img src="g3.jpg" alt="Design 39">
-          <img src="g4.jpg" alt="Design 40"> 
-          <img src="g5.jpg" alt="Design 41">
-          <img src="g6.jpg" alt="Design 42">   
-          <img src="g7.jpg" alt="Design 43"> 
-          <img src="g8.jpg" alt="Design 44">
-          <img src="g9.jpg" alt="Design 45">  
-          <img src="h1.jpg" alt="Design 46"> 
-          <img src="h3.jpg" alt="Design 48"> 
-          <img src="h2.jpg" alt="Design 47">      
-          <img src="h4.jpg" alt="Design 49">      
-          <img src="h5.jpg" alt="Design 50">      
-          <img src="h6.jpg" alt="Design 51">      
-          <img src="h7.jpg" alt="Design 52">      
-          <img src="h8.jpg" alt="Design 53">      
-          <img src="h9.jpg" alt="Design 54">      
-          <img src="j1.jpg" alt="Design 55">      
-          <img src="j2.jpg" alt="Design 56">      
-          <img src="j3.jpg" alt="Design 57">      
-          <img src="j4.jpg" alt="Design 58">      
+function updateArrayDisplay(arr, highlightIndex = -1, foundIndex = -1, currentLow = -1, currentHigh = -1, currentMid = -1) {
+    const arrayDisplay = document.getElementById('arrayDisplay');
+    arrayDisplay.innerHTML = '';
+    arr.forEach((element, index) => {
+        const div = document.createElement('div');
+        div.classList.add('array-element');
+        div.textContent = element;
 
-        <!-- Add more images here -->
-      </div>
-    </section>
-  </div>
+        const indexLabel = document.createElement('div');
+        indexLabel.classList.add('index-label');
+        indexLabel.textContent = `Index: ${index}`;
+        div.appendChild(indexLabel);
 
-  <div id="materials" class="tab-content">
-    <section>
-      <h2>Materials</h2>
-      <p>We use top-quality materials for all our projects.</p>
-      <div class="mat-images">
-               <img src="m1.jpg" alt="mat1">
-        <img src="m2.jpg" alt="mat2">
-        <img src="m3.jpg" alt="mat3">
-        <img src="m4.jpg" alt="mat4">
-        <img src="m5.jpg" alt="mat5">
-        <img src="m6.jpg" alt="mat6">
-        <img src="m7.png" alt="mat7">
-        <img src="m8.jpg" alt="mat8">
-        <img src="m9.jpg" alt="mat9">
-        <!-- Add more images here -->
-      </div>
-    </section>
-  </div>
-<button class="floating-call-button" onclick="callNow()">
-    <i class="fas fa-phone-alt"></i> Call Now
-  </button>
-  <!-- Bottom Nav -->
-  <div class="bottom-nav">
-    <button class="active" onclick="switchTab('home', this)">Home</button>
-    <button onclick="switchTab('textures', this)">Textures</button>
-    <button onclick="switchTab('designs', this)">Designs</button>
-    <button onclick="switchTab('materials', this)">Materials</button>
-  </div>
-
-  <script>
-    // Tab switching
-    function switchTab(tabId, button) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      document.querySelectorAll('.bottom-nav button').forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-    }
-
-    // Slider
-    let slideIndex = 0;
-    showSlides();
-    function showSlides() {
-      const slides = document.getElementsByClassName("slides");
-      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
-      slideIndex++;
-      if (slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 3000);
-    }
-
-    // Share
-    function shareSite() {
-      if (navigator.share) {
-        navigator.share({
-          title: 'Gagana Texture and Designers',
-          text: 'Check out our designs and textures!',
-          url: window.location.href
-        }).then(() => console.log('Thanks for sharing!'))
-          .catch(console.error);
-      } else {
-        alert('Sharing not supported on this browser.');
-      }
-    }
-
-    // YouTube
-    let tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    let firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    let player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        videoId: 'y93AOo9tz2M',
-        playerVars: {
-          autoplay: 1, controls: 0, mute: 1,
-          modestbranding: 1, rel: 0, loop: 1,
-          playlist: 'y93AOo9tz2M'
-        },
-        events: {
-          'onReady': event => {
-            event.target.playVideo();
-            document.querySelector('.video-frame').style.opacity = "1";
-          },
-          'onStateChange': event => {
-            document.querySelector('.video-frame').style.opacity =
-              (event.data === YT.PlayerState.PLAYING) ? "1" : "0.4";
-          }
+        if (index === highlightIndex) {
+            div.classList.add('highlight');
         }
-      });
+        if (index === foundIndex) {
+            div.classList.add('found');
+        }
+
+        if (index === currentLow) {
+            const lowLabel = document.createElement('div');
+            lowLabel.classList.add('low-label', 'i5');
+            lowLabel.textContent = 'Low';
+            div.appendChild(lowLabel);
+        }
+        if (index === currentHigh) {
+            const highLabel = document.createElement('div');
+            highLabel.classList.add('high-label', 'i5');
+            highLabel.textContent = 'High';
+            div.appendChild(highLabel);
+        }
+        if (index === currentMid && currentMid !== -1) {
+            const midLabel = document.createElement('div');
+            midLabel.classList.add('mid-label', 'i5');
+            midLabel.textContent = 'Mid';
+            div.appendChild(midLabel);
+        }
+
+        arrayDisplay.appendChild(div);
+    });
+}
+
+function binarySearchStep() {
+    if (stepIndex >= steps.length) {
+        clearInterval(intervalId);
+        const finalResult = steps.find(step => step.found);
+        if (finalResult) {
+            document.getElementById('message').textContent = `Target ${target} found at index ${finalResult.mid}.`;
+            updateArrayDisplay(array, -1, finalResult.mid);
+        } else {
+            document.getElementById('message').textContent = `Target ${target} not found in the array.`;
+            updateArrayDisplay(array);
+        }
+        return;
     }
-    const review = document.getElementById('review');
-  const images = review.querySelectorAll('img');
-  const total = images.length;
-  let index = 0;
 
-  function slideImages() {
-    index++;
-    review.style.transform = `translateX(-${index * 100}%)`;
-    if (index === total - 1) {
-      setTimeout(() => {
-        review.style.transition = 'none'; // no animation
-        review.style.transform = 'translateX(0)';
-        index = 0;
-      }, 1000); // wait until transition ends
+    const currentStep = steps[stepIndex];
+    document.getElementById('message').textContent = currentStep.message;
+    updateArrayDisplay(array, currentStep.mid, currentStep.found ? currentStep.mid : -1, currentStep.low, currentStep.high, currentStep.mid);
+    stepIndex++;
+}
+
+function prepareSteps() {
+    steps = [];
+    low = 0;
+    high = array.length - 1;
+
+    while (low <= high) {
+        const mid = Math.floor((low + high) / 2);
+        steps.push({
+            low: low,
+            high: high,
+            mid: mid,
+            message: `Checking index ${mid} (value: ${array[mid]}). Low: ${low}, High: ${high}`,
+            found: false
+        });
+
+        if (array[mid] === target) {
+            steps.push({
+                low: low,
+                high: high,
+                mid: mid,
+                message: `Target ${target} found at index ${mid}!`,
+                found: true
+            });
+            break;
+        } else if (array[mid] < target) {
+            const nextLow = mid + 1;
+            steps.push({
+                low: nextLow,
+                high: high,
+                mid: -1,
+                message: `Target ${target} is greater, searching in the right half (indices ${nextLow} to ${high}).`,
+                found: false
+            });
+            low = nextLow;
+        } else {
+            const nextHigh = mid - 1;
+            steps.push({
+                low: low,
+                high: nextHigh,
+                mid: -1,
+                message: `Target ${target} is smaller, searching in the left half (indices ${low} to ${nextHigh}).`,
+                found: false
+            });
+            high = nextHigh;
+        }
     }
-  }
+}
 
-  let slideInterval = setInterval(slideImages, 3000);
+function startBinarySearch() {
+    const arrayInput = document.getElementById('arrayInput').value;
+    const targetInput = document.getElementById('targetInput').value;
 
-  // Pause on hover
-  document.querySelector('.carousel').addEventListener('mouseenter', () => {
-    clearInterval(slideInterval);
-  });
+    array = arrayInput.split(',').map(Number).map(num => parseInt(num.toString().trim())).filter(num => !isNaN(num));
+    target = parseInt(targetInput);
 
-  document.querySelector('.carousel').addEventListener('mouseleave', () => {
-    slideInterval = setInterval(slideImages, 3000);
-  });
-function callNow() {
-      window.location.href = "tel:+1234567890"; // Replace with your actual phone number
+    if (!array.every((v, i, a) => !i || v >= a[i - 1])) {
+        document.getElementById('message').textContent = 'Error: Input array must be sorted.';
+        updateArrayDisplay(array);
+        clearInterval(intervalId);
+        return;
     }
-  </script>
-  <a href="https://wa.me/8722356113" target="_blank">
-  <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="Chat with us on WhatsApp" />
+
+    document.getElementById('message').textContent = 'Starting binary search...';
+    updateArrayDisplay(array);
+    steps = [];
+    stepIndex = 0;
+    prepareSteps();
+    clearInterval(intervalId);
+    intervalId = setInterval(binarySearchStep, 3000);
+}
+
+// Initial display
+const initialArrayInput = document.getElementById('arrayInput').value;
+const initialArray = initialArrayInput.split(',').map(Number).map(num => parseInt(num.toString().trim())).filter(num => !isNaN(num));
+updateArrayDisplay(initialArray);
+</script>
+<div id="message">Enter a sorted array and a target value.</div>
+
 </body>
 </html>
