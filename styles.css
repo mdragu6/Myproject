@@ -44,7 +44,7 @@ html, body {
   background: var(--bg);
   font-size: var(--font-base);
 }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; display: block; height:20%}
 a { color: inherit; text-decoration: none; }
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -1903,4 +1903,5 @@ a { color: inherit; text-decoration: none; }
   .btn.header-cta {
     order: 2;
   }
+
 }
