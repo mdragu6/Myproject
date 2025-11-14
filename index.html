@@ -1,234 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Binary Search Visualization</title>
-<style>
-body {
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.i5 {
-    color: red;
-}
-
-.array-container {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.array-element {
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    margin: 5px;
-    text-align: center;
-    min-width: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.found {
-    background-color: lightgreen;
-}
-
-.index-label {
-    font-size: 0.8em;
-    color: #777;
-}
-
-.low-label, .high-label, .mid-label {
-    font-size: 0.7em;
-    font-weight: bold;
-}
-
-.controls {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-#message {
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: red;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gagana Texture and Design — Wall Finishes, Paints & Interiors</title>
+  <meta name="description" content="Transform spaces with premium textures, wall finishes, waterproofing, and interior solutions by Gagana Texture and Design." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<h1>Binary Search Visualization</h1>
+  <div class="welcome-screen" id="welcomeScreen" role="dialog" aria-modal="true" aria-labelledby="welcome-heading">
+    <div class="welcome-bg"></div>
+    <div class="fireworks-container" id="fireworks"></div>
+    <div class="welcome-logo">
+      <img src="logo.png" alt="Gagana Texture and Design Logo">
+    </div>
+    <h1 class="welcome-text" id="welcome-heading">
+  <span class="headline-text-wrapper" data-text="THE GRAND LAUNCH IS HERE!"></span><br>
+  
+  <span class="welcome-domain-text">
+    <span class="domain-text-wrapper" data-text="www.gaganatextureanddesigners.com"></span> successfully launched.
+  </span>
+  <br>
+  Welcome to the future of **Premium Wall Finishes**.
+</h1>
+  </div>
 
-<div class="controls">
-    <label for="arrayInput">Sorted Array (comma-separated):</label>
-    <input type="text" id="arrayInput" value="2,5,8,12,16,23,38,56,72,91">
-</div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#home">
+        <img src="assets\logo.jpeg" alt="Gagana Texture and Design logo" />
+      </a>
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
+        <button class="menu-close-toggle" aria-label="Close navigation menu">✕</button>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          </ul>
+      </nav>
+      <button class="btn btn-primary header-cta">Book free site visit</button>
+      <button class="menu-toggle" aria-label="Open navigation menu">☰</button>
+    </div>
+  </header>
 
-<div class="controls">
-    <label for="targetInput">Target Value:</label>
-    <input type="number" id="targetInput" value="23">
-</div>
+  <main>
+    <section class="hero" id="home">
+      <div class="carousel" id="heroCarousel" role="region" aria-label="Hero Image Carousel" aria-live="polite">
+        
+        <div class="slide active" role="group" aria-roledescription="slide" aria-label="1 of 4" style="background-image:url('hero1.jpg')">
+          <div class="slide-content container">
+           
+            
+        </div></div>
 
-<button onclick="startBinarySearch()">Start Search</button>
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 4" style="background-image:url('hero2.jpg')">
+          <div class="slide-content container">
+           
+            
+          </div>
+        </div>
+        
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 5" style="background-image:url('hero3.jpg')">
+          <div class="slide-content container">
+                      
+          </div>
+        </div>
 
-<div class="array-container" id="arrayDisplay"></div>
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 5" style="background-image:url('hero4.jpg')">
+          <div class="slide-content container">
+                      
+          </div>
+        </div>
+<div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 5" style="background-image:url('images/hero5.jpg')">
+          <div class="slide-content container">
+               
+          </div>
+        </div>
 
-<script>
-let array = [];
-let target;
-let low;
-let high;
-let steps = [];
-let stepIndex = 0;
-let intervalId;
 
-function updateArrayDisplay(arr, highlightIndex = -1, foundIndex = -1, currentLow = -1, currentHigh = -1, currentMid = -1) {
-    const arrayDisplay = document.getElementById('arrayDisplay');
-    arrayDisplay.innerHTML = '';
-    arr.forEach((element, index) => {
-        const div = document.createElement('div');
-        div.classList.add('array-element');
-        div.textContent = element;
+        <button class="carousel-btn prev" aria-controls="heroCarousel" aria-label="Previous slide">‹</button>
+        <button class="carousel-btn next" aria-controls="heroCarousel" aria-label="Next slide">›</button>
+        <div class="dots" role="tablist" aria-label="Select slide"></div>
+      </div>
+    </section>
+  </main>
 
-        const indexLabel = document.createElement('div');
-        indexLabel.classList.add('index-label');
-        indexLabel.textContent = `Index: ${index}`;
-        div.appendChild(indexLabel);
-
-        // Highlight from low to high in light yellow
-        if (index >= currentLow && index <= currentHigh) {
-            div.style.backgroundColor = 'lightyellow';
-        }
-        // Highlight mid with a stronger yellow
-        if (index === highlightIndex) {
-            div.style.backgroundColor = '#fff59d'; // stronger yellow for mid
-        }
-        // Highlight found index green
-        if (index === foundIndex) {
-            div.style.backgroundColor = 'lightgreen';
-        }
-
-        if (index === currentLow) {
-            const lowLabel = document.createElement('div');
-            lowLabel.classList.add('low-label', 'i5');
-            lowLabel.textContent = 'Low';
-            div.appendChild(lowLabel);
-        }
-        if (index === currentHigh) {
-            const highLabel = document.createElement('div');
-            highLabel.classList.add('high-label', 'i5');
-            highLabel.textContent = 'High';
-            div.appendChild(highLabel);
-        }
-        if (index === currentMid && currentMid !== -1) {
-            const midLabel = document.createElement('div');
-            midLabel.classList.add('mid-label', 'i5');
-            midLabel.textContent = 'Mid';
-            div.appendChild(midLabel);
-        }
-
-        arrayDisplay.appendChild(div);
-    });
-}
-
-function binarySearchStep() {
-    if (stepIndex >= steps.length) {
-        clearInterval(intervalId);
-        const finalResult = steps.find(step => step.found);
-        if (finalResult) {
-            document.getElementById('message').textContent = `Target ${target} found at index ${finalResult.mid}.`;
-            updateArrayDisplay(array, -1, finalResult.mid);
-        } else {
-            document.getElementById('message').textContent = `Target ${target} not found in the array.`;
-            updateArrayDisplay(array);
-        }
-        return;
-    }
-
-    const currentStep = steps[stepIndex];
-    document.getElementById('message').textContent = currentStep.message;
-    updateArrayDisplay(array, currentStep.mid, currentStep.found ? currentStep.mid : -1, currentStep.low, currentStep.high, currentStep.mid);
-    stepIndex++;
-}
-
-function prepareSteps() {
-    steps = [];
-    low = 0;
-    high = array.length - 1;
-
-    while (low <= high) {
-        const mid = Math.floor((low + high) / 2);
-        steps.push({
-            low: low,
-            high: high,
-            mid: mid,
-            message: `Checking index ${mid} (value: ${array[mid]}). Low: ${low}, High: ${high}`,
-            found: false
-        });
-
-        if (array[mid] === target) {
-            steps.push({
-                low: low,
-                high: high,
-                mid: mid,
-                message: `Target ${target} found at index ${mid}!`,
-                found: true
-            });
-            break;
-        } else if (array[mid] < target) {
-            const nextLow = mid + 1;
-            steps.push({
-                low: nextLow,
-                high: high,
-                mid: -1,
-                message: `Target ${target} is greater, searching in the right half (indices ${nextLow} to ${high}).`,
-                found: false
-            });
-            low = nextLow;
-        } else {
-            const nextHigh = mid - 1;
-            steps.push({
-                low: low,
-                high: nextHigh,
-                mid: -1,
-                message: `Target ${target} is smaller, searching in the left half (indices ${low} to ${nextHigh}).`,
-                found: false
-            });
-            high = nextHigh;
-        }
-    }
-}
-
-function startBinarySearch() {
-    const arrayInput = document.getElementById('arrayInput').value;
-    const targetInput = document.getElementById('targetInput').value;
-
-    array = arrayInput.split(',').map(Number).map(num => parseInt(num.toString().trim())).filter(num => !isNaN(num));
-    target = parseInt(targetInput);
-
-    if (!array.every((v, i, a) => !i || v >= a[i - 1])) {
-        document.getElementById('message').textContent = 'Error: Input array must be sorted.';
-        updateArrayDisplay(array);
-        clearInterval(intervalId);
-        return;
-    }
-
-    document.getElementById('message').textContent = 'Starting binary search...';
-    updateArrayDisplay(array);
-    steps = [];
-    stepIndex = 0;
-    prepareSteps();
-    clearInterval(intervalId);
-    intervalId = setInterval(binarySearchStep, 3000);
-}
-
-// Initial display
-const initialArrayInput = document.getElementById('arrayInput').value;
-const initialArray = initialArrayInput.split(',').map(Number).map(num => parseInt(num.toString().trim())).filter(num => !isNaN(num));
-updateArrayDisplay(initialArray);
-</script>
-<div id="message">Enter a sorted array and a target value.</div>
-
+  <script src="Script.js"></script>
 </body>
+
 </html>
